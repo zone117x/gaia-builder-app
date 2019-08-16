@@ -1,0 +1,26 @@
+{
+  "name": "gaia-builder-app",
+  "version": "0.0.1",
+  "description": "Gaia Hub Deployer",
+  "main": "app/js/index.js",
+  "scripts": {
+    "test": "echo \"todo tests\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zone117x/gaia-builder-app.git"
+  },
+  "keywords": [
+    "gaia",
+    "hub",
+    "blockstack"
+  ],
+  "authors": [
+    "Matthew Little <matthew@blockstack.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zone117x/gaia-builder-app/issues"
+  },
+  "homepage": "https://github.com/zone117x/gaia-builder-app#readme"
+}
