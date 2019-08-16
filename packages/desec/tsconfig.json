@@ -6,7 +6,9 @@
     "declarationMap": true,
     "sourceMap": true,
     "strict": true,
-    "outDir": "./lib",
+    "lib": [
+      "es2017"
+    ],
     "noEmit": true,
   }
 }

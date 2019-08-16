@@ -16,7 +16,7 @@ describe('desec.io API tests', () => {
   let desecAPI: desec.DesecAPI;
 
   before('setup API instance', () => {
-    desecAPI = new desec.DesecAPI({fetch: nodeFetch as any});
+    desecAPI = new desec.DesecAPI({fetch: nodeFetch.default});
   });
 
   it('registration - email already taken', async () => {

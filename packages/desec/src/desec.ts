@@ -2,12 +2,13 @@ const API_ENDPOINT = 'https://desec.io/api/v1';
 const USER_AGENT = 'blockstack-gaia-desec';
 const DEFAULT_ROOT_DOMAIN = 'dedyn.io';
 
+
 export class DesecAPI {
 
-  fetchFn: typeof fetch;
+  fetchFn: FetchType;
   authToken?: string;
 
-  constructor(opts?: { authToken?: string; fetch?: typeof fetch; }) {
+  constructor(opts?: { authToken?: string; fetch?: FetchType; }) {
     if (opts && opts.fetch) {
       this.fetchFn = opts.fetch;
     } else if (typeof fetch !== 'undefined') {
@@ -146,7 +147,7 @@ export class DesecAPI {
     const result = await response.json();
     return result;
   }
-
+  
   async listDomains(): Promise<ListDomainsResult> {
     const url = `${API_ENDPOINT}/domains/`;
     const fetchOpts = getDefaultFetchOpts({
@@ -297,10 +298,10 @@ export class DesecAPI {
 
 function getDefaultFetchOpts(opts: {
   method: HttpMethod;
-  headers?: HeadersInit;
+  headers?: { [key: string]: string; };
   authToken?: string;
   contentType?: ValidContentType;
-  body?: BodyInit;
+  body?: string;
 }): RequestInit {
   const paramHeaders: { [key: string]: string; } = {};
   if (opts.authToken) {
@@ -347,6 +348,28 @@ function getFullDomainName(name: string, useDefaultRoot = true): string {
 
 type HttpMethod = 'POST' | 'GET' | 'DELETE' | 'PUT' | 'PATCH';
 type ValidContentType = 'application/json';
+
+// Use a minimal fetch type def rather then requiring a dependency on DOM types. 
+export type RequestInit = {
+  body?: string | any;
+  headers?: { [key: string]: any; } | string[][];
+  method?: string;
+  mode?: string | any;
+  cache?: string | any;
+  referrer?: string;
+  redirect?: string | any;
+  [key: string]: any;
+};
+export type Response = {
+  json(): Promise<any>;
+  text(): Promise<string>;
+  status: number;
+  statusText: string;
+  ok: boolean;
+  [key: string]: any;
+};
+export type FetchType = (url: string, init?: RequestInit) => Promise<Response>;
+declare const fetch: FetchType;
 
 export interface AccountInfoResult {
   /** 
