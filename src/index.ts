@@ -1,8 +1,7 @@
 import importModule from './dynamicModuleImportShim';
 import globalThis from './globalThisShim';
 
-import desec from '../../desec/src/index';
-import d1 from 'desec';
+import desec from 'desec';
 
 export const testThing = async () => {
   const desecAPI = new desec();
@@ -21,7 +20,3 @@ export function createDesecInst() {
   return ff;
 }
 
-export function createDesec1() {
-  const f = new d1();
-  return f;
-}

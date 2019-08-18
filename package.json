@@ -37,7 +37,9 @@
     "url": "https://github.com/zone117x/gaia-builder-app/issues"
   },
   "homepage": "https://github.com/zone117x/gaia-builder-app#readme",
-  "dependencies": {},
+  "dependencies": {
+    "desec": "file:packages/desec"
+  },
   "devDependencies": {
     "@types/chai": "^4.2.0",
     "@types/chai-as-promised": "^7.1.2",

@@ -1,0 +1,4 @@
+[submodule "packages/desec"]
+	path = packages/desec
+	url = git@github.com:zone117x/desec-js.git
+	branch = master
