@@ -9,11 +9,11 @@
     "node": ">=10"
   },
   "scripts": {
-    "clean": "shx rm -rf ./dist-*/",
+    "clean": "shx rm -rf ./dist*/",
     "build": "run-s clean build-all",
     "build-all": "run-p build:*",
     "build:cjs": "tsc --outDir ./dist-cjs -m commonjs -t es2017",
-    "build:esm": "tsc --outDir ./dist-esm -m es6 -t es2017",
+    "build:rollup": "rollup -c",
     "lint": "eslint --ext .ts ./src ./test -f unix",
     "lint:fix": "eslint --fix --ext .ts ./src ./test -f unix",
     "test": "run-s lint test:coverage",
@@ -55,6 +55,9 @@
     "node-fetch": "^2.6.0",
     "npm-run-all": "^4.1.5",
     "nyc": "^14.1.1",
+    "rollup": "^1.19.4",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "shx": "^0.3.2",
     "source-map-support": "^0.5.13",
     "ts-node": "^8.3.0",
