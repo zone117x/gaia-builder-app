@@ -2,9 +2,23 @@
   "name": "gaia-builder-app",
   "version": "0.0.1",
   "description": "Gaia Hub Deployer",
-  "main": "app/js/index.js",
+  "types": "./dist-types/index.d.ts",
+  "main": "./dist-cjs/index.js",
+  "module": "./dist-esm/index.js",
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
-    "test": "echo \"todo tests\""
+    "clean": "shx rm -rf ./dist-*/",
+    "build": "run-s clean build-all",
+    "build-all": "run-p build:*",
+    "build:cjs": "tsc --outDir ./dist-cjs -m commonjs -t es2017",
+    "build:esm": "tsc --outDir ./dist-esm -m es6 -t es2017",
+    "lint": "eslint --ext .ts ./src ./test -f unix",
+    "lint:fix": "eslint --fix --ext .ts ./src ./test -f unix",
+    "test": "run-s lint test:coverage",
+    "test:coverage": "nyc mocha",
+    "prepublishOnly": "run-p test build"
   },
   "repository": {
     "type": "git",
@@ -22,5 +36,47 @@
   "bugs": {
     "url": "https://github.com/zone117x/gaia-builder-app/issues"
   },
-  "homepage": "https://github.com/zone117x/gaia-builder-app#readme"
+  "homepage": "https://github.com/zone117x/gaia-builder-app#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/chai-as-promised": "^7.1.2",
+    "@types/mocha": "^5.2.7",
+    "@types/node-fetch": "^2.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.1.0",
+    "mocha": "^6.2.0",
+    "node-fetch": "^2.6.0",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^14.1.1",
+    "shx": "^0.3.2",
+    "source-map-support": "^0.5.13",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "nyc": {
+    "cache": false,
+    "all": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "require": [
+      "ts-node/register/transpile-only",
+      "source-map-support/register"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
 }

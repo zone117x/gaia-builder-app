@@ -7,9 +7,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "desec-test",
-            "program": "${workspaceFolder}/packages/desec/node_modules/mocha/bin/_mocha",
-            "cwd": "${workspaceFolder}/packages/desec"
+            "name": "test",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "cwd": "${workspaceFolder}/"
         },
         
     ]
