@@ -1,0 +1,7 @@
+* Test if esm modules in node.js v12 (package.json {"type": "module"}) is viable for unit testing within mocha. 
+  * Goal being: to unit test the rollup esm dist/**.js output directly. 
+* Rollup css bundling for pureCSS npm package -- output to /assets, directly reference from /index.html. 
+* Rollup inclusion of cash-dom lib. 
+* UI: Setup the three page sections where each deployment service is listed as an option. 
+* Minimal SPA / view controller logic for page section interaction (using cash-dom?). 
+* UI: Present pros & cons of each service option in user-friendly way. 

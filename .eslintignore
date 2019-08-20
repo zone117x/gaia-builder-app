@@ -1,4 +1,4 @@
-dist*/**/*.js
+dist*
 webpack.config.js
 rollup.config.js
 packages/

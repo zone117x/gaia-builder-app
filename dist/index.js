@@ -3,8 +3,12 @@
 // https://github.com/uupaa/dynamic-import-polyfill/blob/master/importModule.js
 // eslint-disable-next-line @typescript-eslint/promise-function-async
 function importModule(url) {
-    try { // if dynamic import is supported, don't bother with the stuff below
-        return (new Function(`return import("${url}")`))();
+    // if dynamic import is supported, don't bother with the stuff below
+    try {
+        // return (new Function(`return import("${url}")`))();
+        // ^ That method is often disallowed from Content Security Policy (like within web extensions)
+        //   Seems like this should work?
+        return import(url);
     }
     catch (err) {
         // ignore
@@ -68,6 +72,11 @@ var globalThis = (function () {
         delete Object.prototype.__global__;
     }
 })();
+
+function domTest() {
+    const el = document.getElementById('thing');
+    el.innerText = 'works';
+}
 
 const API_ENDPOINT = 'https://desec.io/api/v1';
 const USER_AGENT = 'blockstack-gaia-desec';
@@ -421,6 +430,12 @@ async function otherThing() {
 function createDesecInst() {
     const ff = new DesecAPI();
     return ff;
+}
+try {
+    domTest();
+}
+catch (error) {
+    // console.log('')
 }
 
 export { createDesecInst, otherThing, testThing };

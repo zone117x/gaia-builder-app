@@ -1,6 +1,6 @@
 import importModule from './dynamicModuleImportShim';
 import globalThis from './globalThisShim';
-
+import * as viewModel from './viewModel';
 import desec from 'desec';
 
 export const testThing = async () => {
@@ -20,3 +20,9 @@ export function createDesecInst() {
   return ff;
 }
 
+
+try {
+  viewModel.domTest();
+} catch (error) {
+  // console.log('')
+}

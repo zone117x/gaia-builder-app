@@ -4,12 +4,16 @@
 
 // eslint-disable-next-line @typescript-eslint/promise-function-async
 export default function importModule(url: string): Promise<any> {
-  try { // if dynamic import is supported, don't bother with the stuff below
-    return (new Function(`return import("${url}")`))();
+  // if dynamic import is supported, don't bother with the stuff below
+  try { 
+    // return (new Function(`return import("${url}")`))();
+    // ^ That method is often disallowed from Content Security Policy (like within web extensions)
+    //   Seems like this should work?
+    return import(url);
   } catch (err) {
     // ignore
   }
-    
+  
   function toAbsoluteURL(url: string) {
     const a = document.createElement('a');
     a.setAttribute('href', url);    // <a href="hoge.html">

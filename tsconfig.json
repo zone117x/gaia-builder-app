@@ -3,6 +3,9 @@
     "target": "es2017",
     "module": "commonjs",
     "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./dist-types",
     "rootDir": "./src",
     "strict": true,
     "lib": [
