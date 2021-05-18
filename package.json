@@ -64,7 +64,7 @@
     "purecss": "^1.0.1",
     "rollup": "^1.19.4",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-serve": "^1.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "shx": "^0.3.2",
     "source-map-support": "^0.5.13",
